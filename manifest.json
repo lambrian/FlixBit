@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+
+        "name": "FlixBit",
+        "description": "Track Netflix consumption",
+        "version": "1.0",
+
+        "content_scripts": [
+        {
+            "matches": ["http://www.netflix.com/watch/*"],
+            "js": ["jquery.min.js", "tracker.js"]
+        }
+    ]
+}
