@@ -11,8 +11,18 @@ chrome.storage.sync.get(['flixBitTimes', 'flixBitStatus'], function (data) {
         console.log (duration);
         totalDuration += duration;
     }
-    console.log (totalDuration);
     var parsed = moment.duration(totalDuration);
-    document.getElementById('duration').innerHTML = 
-    parsed.months() + " months : " + parsed.days() + " days : " + parsed.hours() + " hours :" + parsed.minutes() + " minutes : " + parsed.seconds() + " seconds ";
+    var display = document.getElementById('duration');
+
+    var createChild = function (text) {
+        var elem = document.createElement('div');
+        elem.appendChild(document.createTextNode(text));
+        return elem;
+    }
+
+    display.appendChild(createChild(parsed.months() + " months"));
+    display.appendChild(createChild(parsed.days() + " days"));
+    display.appendChild(createChild(parsed.hours() + " hours"));
+    display.appendChild(createChild(parsed.minutes() + " minutes"));
+    display.appendChild(createChild(parsed.seconds() + " seconds"));
 });
