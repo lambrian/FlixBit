@@ -9,7 +9,6 @@ if (!listenerSet) {
                 {'flixBitTimes': JSON.stringify(times), 
                     'flixBitStatus': latestStatus}, 
                     function () {});
-            console.log(times);
         });
     };
 
@@ -17,11 +16,9 @@ if (!listenerSet) {
         if (e.target.tagName === 'VIDEO') {
             $('video').first().on('play', function (e) {
                 appendTime('start');
-                console.log ('play.');
             });
             $('video').first().on('pause', function (e) {
                 appendTime('stop');
-                console.log ('pause.');
             });
         }
     });
