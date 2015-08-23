@@ -3,11 +3,12 @@ if (!listenerSet) {
     listenerSet = true;
     var appendTime = function(latestStatus) {
         chrome.storage.sync.get('flixBitTimes', function (data) {
-            var times = data['flixBitTimes'];
+            var times = JSON.parse(data['flixBitTimes']);
             times.push(new Date());
             chrome.storage.sync.set(
-                {'flixBitTimes': times, 'flixBitStatus': latestStatus}, 
-                function () {});
+                {'flixBitTimes': JSON.stringify(times), 
+                    'flixBitStatus': latestStatus}, 
+                    function () {});
             console.log(times);
         });
     };
